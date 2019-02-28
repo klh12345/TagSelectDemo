@@ -19,6 +19,7 @@
 		A20DDC50222777160085C70B /* TageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A20DDC4F222777160085C70B /* TageModel.m */; };
 		A20DDC532227777B0085C70B /* DropMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A20DDC522227777B0085C70B /* DropMenuCell.m */; };
 		A20DDC562227778C0085C70B /* DropMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = A20DDC552227778C0085C70B /* DropMenuView.m */; };
+		A20DDC592227E3E00085C70B /* ScreeningView.m in Sources */ = {isa = PBXBuildFile; fileRef = A20DDC582227E3E00085C70B /* ScreeningView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,8 @@
 		A20DDC522227777B0085C70B /* DropMenuCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DropMenuCell.m; sourceTree = "<group>"; };
 		A20DDC542227778C0085C70B /* DropMenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DropMenuView.h; sourceTree = "<group>"; };
 		A20DDC552227778C0085C70B /* DropMenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DropMenuView.m; sourceTree = "<group>"; };
+		A20DDC572227E3E00085C70B /* ScreeningView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreeningView.h; sourceTree = "<group>"; };
+		A20DDC582227E3E00085C70B /* ScreeningView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreeningView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,8 @@
 				A20DDC552227778C0085C70B /* DropMenuView.m */,
 				A20DDC1C222689420085C70B /* ViewController.h */,
 				A20DDC1D222689420085C70B /* ViewController.m */,
+				A20DDC572227E3E00085C70B /* ScreeningView.h */,
+				A20DDC582227E3E00085C70B /* ScreeningView.m */,
 				A20DDC1F222689420085C70B /* Main.storyboard */,
 				A20DDC25222689430085C70B /* Assets.xcassets */,
 				A20DDC27222689430085C70B /* LaunchScreen.storyboard */,
@@ -283,6 +288,7 @@
 				A20DDC1E222689420085C70B /* ViewController.m in Sources */,
 				A20DDC50222777160085C70B /* TageModel.m in Sources */,
 				A20DDC24222689420085C70B /* SelectTageDemo.xcdatamodeld in Sources */,
+				A20DDC592227E3E00085C70B /* ScreeningView.m in Sources */,
 				A20DDC532227777B0085C70B /* DropMenuCell.m in Sources */,
 				A20DDC562227778C0085C70B /* DropMenuView.m in Sources */,
 				A20DDC2C222689430085C70B /* main.m in Sources */,

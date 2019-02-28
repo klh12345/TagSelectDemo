@@ -12,11 +12,15 @@
 #import "DropMenuCell.h"
 #import "TageModel.h"
 
+#import "ScreeningView.h"
+
 #define ScreenW [UIScreen mainScreen].bounds.size.width
 #define ScreenH [UIScreen mainScreen].bounds.size.height
 #define StatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
+
 @interface ViewController ()<DropMenuDelegate>
 @property (strong , nonatomic) TageModel *model;
+@property (strong , nonatomic) ScreeningView *screenView;
 
 @end
 @implementation ViewController
@@ -102,9 +106,44 @@
     
     
     
+    // 筛选按钮
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:@"筛选" forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor colorWithRed:51.0f/255.0f green:51.0f/255.0f blue:51.0f/255.0f alpha:1.0f] forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont systemFontOfSize:14.0f];
+    [button addTarget:self action:@selector(shaixuan:) forControlEvents:UIControlEventTouchUpInside];
     
+    UIBarButtonItem *rightbar = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.rightBarButtonItem = rightbar;
+    
+    self.screenView = [[ScreeningView alloc] initWithFrame:CGRectMake(ScreenW, StatusBarHeight, 0, ScreenH - StatusBarHeight)];
+    
+    self.screenView.backgroundColor = [UIColor colorWithRed:150.0f/255.0f green:150.0f/255.0f blue:150.0f/255.0f alpha:1.0f];
+    [self.view addSubview:self.screenView];
+    
+    UITapGestureRecognizer *taper = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss:)];
+    taper.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:taper];
     
 }
+
+
+- (void)shaixuan:(UIButton *)sender{
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.screenView.frame = CGRectMake(ScreenW *1/3, StatusBarHeight, ScreenW * 2/3, ScreenH - StatusBarHeight);
+    }];
+
+}
+
+- (void)dismiss:(UITapGestureRecognizer *)taper{
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        
+        self.screenView.frame = CGRectMake(ScreenW, StatusBarHeight, 0, ScreenH - StatusBarHeight);
+    }];
+}
+
 
 
 - (void)dropppmenuView:(DropMenuView *)view withResutStr:(NSString *)str{

@@ -13,6 +13,7 @@
 
 #define ScreenW [UIScreen mainScreen].bounds.size.width
 #define ScreenH [UIScreen mainScreen].bounds.size.height
+#define NavigationBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
 
 @interface DropMenuView ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,DropMenuItemDelegate>
 @property (strong , nonatomic) UICollectionViewFlowLayout *flowLayout;
@@ -74,7 +75,7 @@ static NSString *const dropMenuCellid = @"DropMenuCell";
     if (models.menuHeight) {
         
         [UIView animateWithDuration:0.2 animations:^{
-            self.collectioView.frame = CGRectMake(0, [[UIApplication sharedApplication] statusBarFrame].size.height, ScreenW, models.menuHeight);
+            self.collectioView.frame = CGRectMake(0, NavigationBarHeight, ScreenW, models.menuHeight);
             
         } completion:^(BOOL finished) {
         }];
@@ -108,7 +109,7 @@ static NSString *const dropMenuCellid = @"DropMenuCell";
 
 - (void)layoutSubviews{
     
-    self.collectioView.frame = CGRectMake(0, [[UIApplication sharedApplication] statusBarFrame].size.height, ScreenW,self.menuHeight);
+    self.collectioView.frame = CGRectMake(0, NavigationBarHeight, ScreenW,self.menuHeight);
     self.headerLine.frame = CGRectMake(0, 0, ScreenW, 1);
     self.bottomLine.frame = CGRectMake(0, self.menuHeight - 1, ScreenW, 1);
     
@@ -126,7 +127,8 @@ static NSString *const dropMenuCellid = @"DropMenuCell";
     
     [self.collectioView reloadData];
     [UIView animateWithDuration:0.3 animations:^{
-        self.tableView.frame = CGRectMake(0, self.menuHeight+[[UIApplication sharedApplication] statusBarFrame].size.height, ScreenW, headerModel.dataArray.count * 44);
+        
+        self.tableView.frame = CGRectMake(0, self.menuHeight+NavigationBarHeight, ScreenW, headerModel.dataArray.count * 44);
         self.backgroundColor = [UIColor colorWithRed:200.0f/255.0f green:200.0f/255.0f blue:200.0f/255.0F alpha:1.0F];
     } completion:^(BOOL finished) {
         
@@ -138,7 +140,7 @@ static NSString *const dropMenuCellid = @"DropMenuCell";
     
     [self resetExpress];
     [UIView animateWithDuration:0.3 animations:^{
-        self.tableView.frame = CGRectMake(0,[[UIApplication sharedApplication] statusBarFrame].size.height +self.menuHeight, ScreenW, 0);
+        self.tableView.frame = CGRectMake(0,NavigationBarHeight +self.menuHeight, ScreenW, 0);
         self.backgroundColor = [UIColor clearColor];
     } completion:^(BOOL finished) {
         
@@ -273,7 +275,7 @@ static NSString *const dropMenuCellid = @"DropMenuCell";
     
     if (!_tableView) {
         
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, [[UIApplication sharedApplication] statusBarFrame].size.height+60, ScreenW, 0) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NavigationBarHeight+60, ScreenW, 0) style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         
@@ -301,7 +303,7 @@ static NSString *const dropMenuCellid = @"DropMenuCell";
     
     if (!_collectioView) {
         
-        _collectioView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, [[UIApplication sharedApplication] statusBarFrame].size.height, ScreenW, 0) collectionViewLayout:self.flowLayout];
+        _collectioView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, NavigationBarHeight, ScreenW, 0) collectionViewLayout:self.flowLayout];
         _collectioView.delegate = self;
         _collectioView.dataSource = self;
         
