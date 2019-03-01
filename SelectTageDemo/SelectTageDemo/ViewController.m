@@ -118,30 +118,31 @@
     
     self.screenView = [[ScreeningView alloc] initWithFrame:CGRectMake(ScreenW, StatusBarHeight, 0, ScreenH - StatusBarHeight)];
     
-    self.screenView.backgroundColor = [UIColor colorWithRed:150.0f/255.0f green:150.0f/255.0f blue:150.0f/255.0f alpha:1.0f];
+//    self.screenView.backgroundColor = [UIColor colorWithRed:150.0f/255.0f green:150.0f/255.0f blue:150.0f/255.0f alpha:1.0f];
     [self.view addSubview:self.screenView];
     
-    UITapGestureRecognizer *taper = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss:)];
-    taper.numberOfTapsRequired = 1;
-    [self.view addGestureRecognizer:taper];
     
 }
 
 
 - (void)shaixuan:(UIButton *)sender{
-    
-    [UIView animateWithDuration:0.3 animations:^{
-        self.screenView.frame = CGRectMake(ScreenW *1/3, StatusBarHeight, ScreenW * 2/3, ScreenH - StatusBarHeight);
-    }];
-
-}
-
-- (void)dismiss:(UITapGestureRecognizer *)taper{
-    
-    [UIView animateWithDuration:0.3 animations:^{
+    sender.selected = !sender.selected;
+    if (sender.selected) {
         
-        self.screenView.frame = CGRectMake(ScreenW, StatusBarHeight, 0, ScreenH - StatusBarHeight);
-    }];
+        [UIView animateWithDuration:0.4 animations:^{
+            self.screenView.frame = CGRectMake(ScreenW *1/3, StatusBarHeight, ScreenW * 2/3, ScreenH - StatusBarHeight);
+        }];
+
+    }else{
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            
+            self.screenView.frame = CGRectMake(ScreenW, StatusBarHeight, 0, ScreenH - StatusBarHeight);
+        }];
+
+    }
+    
+   
 }
 
 

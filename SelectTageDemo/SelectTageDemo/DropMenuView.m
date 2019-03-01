@@ -207,7 +207,7 @@ static NSString *const dropMenuCellid = @"DropMenuCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tableCell"];
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleDefault;
     // 先定位当前头部标签类型
     TageModel *model = self.titles[self.currentIndex];
     // 根据类型取出对应类型下的值
@@ -226,10 +226,19 @@ static NSString *const dropMenuCellid = @"DropMenuCell";
     TageModel *model = self.titles[self.currentIndex];
     TageModel *contentModel = model.dataArray[indexPath.row];
     
+    // 赋值给头部分类栏目
+    model.title = contentModel.title;
+    
     NSString *str = contentModel.title;
+    if (str) {
+        [self dismiss];
+    }
+    
     if ([self.delegate respondsToSelector:@selector(dropppmenuView:withResutStr:)]) {
         [self.delegate dropppmenuView:self withResutStr:str];
     }
+    // 跟新头部显示信息
+    [self resetExpress];
     
 }
 
